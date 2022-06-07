@@ -112,7 +112,7 @@ Material:
     - _FadeStart: 0.5
     - _Fresnel: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossinessSource: 0
     - _GlossyReflections: 1
     - _Intensity: 0.5
@@ -143,6 +143,6 @@ Material:
     - _MyColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectColor: {r: 1, g: 0, b: 0, a: 0.5019608}
-    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 0.84313726, g: 0.6509804, b: 0.53333336, a: 1}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []

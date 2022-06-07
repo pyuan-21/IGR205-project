@@ -10,6 +10,10 @@ public class HandPresence : MonoBehaviour
     public Animator handAnimator;
     private Rigidbody rb;
     private bool isGrabing;
+    private int objectIndex;
+    private int objectMaxNum;
+    private bool isPrimaryBtnPressed;
+    private bool isSecondaryBtnPressed;
 
     void Start()
     {
@@ -29,6 +33,11 @@ public class HandPresence : MonoBehaviour
         rb = transform.GetComponent<Rigidbody>();
 
         isGrabing = false;
+
+        objectIndex = 0;
+        objectMaxNum = 2;
+        isPrimaryBtnPressed = false;
+        isSecondaryBtnPressed = false;
     }
 
     void UpdateHandAnimation()
@@ -56,6 +65,13 @@ public class HandPresence : MonoBehaviour
     void SwitchNextObject()
     {
         //todo
+        var root = GameObject.Find("DisplayRoot");
+        for(int i = 0; i < root.transform.childCount; i++)
+        {
+            var trans = root.transform.GetChild(i);
+            trans.gameObject.SetActive(trans.gameObject.name == objectIndex.ToString());
+        }
+        objectIndex = (objectIndex + 1) % objectMaxNum;
     }
 
     void ResetObjectPos()
@@ -66,18 +82,30 @@ public class HandPresence : MonoBehaviour
     void HandleDeviceInput()
     {
         targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryValue);
-        targetDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out bool secondaryValue);
-        if (!isGrabing && primaryValue)
+        if (!isPrimaryBtnPressed && primaryValue)
         {
+            //handle click!
             Debug.Log("primaryButton click");
-            SwitchNextObject();
-        }
 
-        if (!isGrabing && secondaryValue)
-        {
-            Debug.Log("secondaryButton click");
-            ResetObjectPos();
+            if (!isGrabing)
+            {
+                SwitchNextObject();
+            }
         }
+        isPrimaryBtnPressed = primaryValue;
+
+        targetDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out bool secondaryValue);
+        if (!isSecondaryBtnPressed && secondaryValue)
+        {
+            //handle click!
+            Debug.Log("secondaryButton click");
+
+            if (!isGrabing)
+            {
+                ResetObjectPos();
+            }
+        }
+        isSecondaryBtnPressed = secondaryValue;
     }
 
     // Update is called once per frame
