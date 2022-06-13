@@ -73,3 +73,16 @@ SMC/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 SMC/Logs/*
 SMC/Library/ArtifactDB
+*.log
+SMC/Library/ArtifactDB
+SMC/Library/SceneVisibilityState.asset
+SMC/Library/ScriptAssemblies/Assembly-CSharp.dll
+SMC/Library/ShaderCache/EditorEncounteredVariants
+SMC/Library/SourceAssetDB
+SMC/Library/StateCache/MainStageHierarchy/8f/8fd65426490f636435c901d65ce7ed24.json
+SMC/Logs/shadercompiler-UnityShaderCompiler.exe2.log
+SMC/Logs/shadercompiler-UnityShaderCompiler.exe3.log
+SMC/Logs/shadercompiler-UnityShaderCompiler.exe4.log
+SMC/Logs/shadercompiler-UnityShaderCompiler.exe5.log
+SMC/Logs/shadercompiler-UnityShaderCompiler.exe6.log
+SMC/Logs/shadercompiler-UnityShaderCompiler.exe7.log
