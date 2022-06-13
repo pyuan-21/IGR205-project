@@ -2481,7 +2481,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerCharacteristics: 576
   handAnimator: {fileID: 6563719495854067949}
-  objectMaxNum: 0
 --- !u!1 &1045848415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,7 +2945,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerCharacteristics: 320
   handAnimator: {fileID: 9148736532595008213}
-  objectMaxNum: 0
 --- !u!1 &1393625700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,6 +3703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1725982594}
   - component: {fileID: 1725982593}
+  - component: {fileID: 1725982595}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -3748,6 +3747,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 13.92, y: -90, z: 0}
+--- !u!114 &1725982595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725982592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a068d04ead642468f1b1c921f74929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1728657555
 GameObject:
   m_ObjectHideFlags: 0
@@ -4814,7 +4825,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerCharacteristics: 320
   handAnimator: {fileID: 645432388}
-  objectMaxNum: 0
 --- !u!1 &3652456238724005383
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,7 +7069,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerCharacteristics: 576
   handAnimator: {fileID: 1206698041}
-  objectMaxNum: 0
 --- !u!1 &6809778325037690695
 GameObject:
   m_ObjectHideFlags: 0
