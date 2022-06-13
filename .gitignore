@@ -70,3 +70,5 @@
 # Temporary auto-generated Android Assets
 /SMC/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /SMC/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+/SMC/Logs/*
