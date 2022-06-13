@@ -1,0 +1,64 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 18.01.2012 14:06:19
+
+newmtl mp3_connector_bolts
+	Ns 75.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.7098 0.4431 0.3412
+	Kd 0.8314 0.6275 0.4471
+	Ks 0.6235 0.5529 0.2676
+	Ke 0.0000 0.0000 0.0000
+
+newmtl mp3_wall_charger_metal
+	Ns 75.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.7569 0.7569 0.7569
+	Kd 0.7569 0.7569 0.7569
+	Ks 0.6750 0.6750 0.6750
+	Ke 0.0000 0.0000 0.0000
+
+newmtl mp3_wall_charger_stecker
+	Ns 33.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.3690 0.3690 0.3690
+	Ke 0.0000 0.0000 0.0000
+	map_Ka mp3_wall_charger_steacker.jpg
+	map_Kd mp3_wall_charger_steacker.jpg
+
+newmtl mp3_wall_charger_corpus
+	Ns 59.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0275 0.0275 0.0275
+	Kd 0.0863 0.0863 0.0863
+	Ks 0.2654 0.2654 0.2654
+	Ke 0.0000 0.0000 0.0000
+
+newmtl mp3_wall_charger_cord
+	Ns 36.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0275 0.0275 0.0275
+	Kd 0.0863 0.0863 0.0863
+	Ks 0.2202 0.2202 0.2202
+	Ke 0.0000 0.0000 0.0000
