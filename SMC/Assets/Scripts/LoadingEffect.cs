@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class LoadingEffect : MonoBehaviour
 {
-    public bool isRunLoadingEffect = true;
-
     private float sphereThreshold = 0.0f;
     private float modelThreshold = 1.0f;
 
@@ -15,7 +13,7 @@ public class LoadingEffect : MonoBehaviour
 
     public Transform dissolveSphere;
     public Transform modelRoot;
-
+    public Transform constantSettingTrans;
 
     #region other solution-cube
     // other solution-cube
@@ -151,6 +149,12 @@ public class LoadingEffect : MonoBehaviour
         }
     }
 
+    private void OnNormalLoad()
+    {
+        UpdateDissolve(dissolveSphere, 1);
+        UpdateDissolve(modelRoot, 0);
+    }
+
     private void OnEnable()
     {
         sphereThreshold = 0.0f;
@@ -173,9 +177,14 @@ public class LoadingEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool isRunLoadingEffect = constantSettingTrans.GetComponent<ConstantSetting>().isRunLoadingEffect;
         if (isRunLoadingEffect)
         {
             OnLoadingEffect();
+        }
+        else
+        {
+            OnNormalLoad();
         }
     }
 }
