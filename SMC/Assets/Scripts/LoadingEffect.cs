@@ -13,7 +13,7 @@ public class LoadingEffect : MonoBehaviour
 
     public Transform dissolveSphere;
     public Transform modelRoot;
-    public Transform constantSettingTrans;
+    private Transform constantSettingTrans;
 
     #region other solution-cube
     // other solution-cube
@@ -138,6 +138,7 @@ public class LoadingEffect : MonoBehaviour
             //set sphere
             sphereThreshold += loadingSpeed;
             sphereThreshold = Mathf.Clamp(sphereThreshold, 0, 1);
+            dissolveSphere.gameObject.SetActive(true);
             UpdateDissolve(dissolveSphere, sphereThreshold);
         }
         else
@@ -146,13 +147,14 @@ public class LoadingEffect : MonoBehaviour
             modelThreshold -= loadingSpeed;
             modelThreshold = Mathf.Clamp(modelThreshold, 0, 1);
             UpdateDissolve(modelRoot, modelThreshold);
+            dissolveSphere.gameObject.SetActive(false);
         }
     }
 
     private void OnNormalLoad()
     {
-        UpdateDissolve(dissolveSphere, 1);
         UpdateDissolve(modelRoot, 0);
+        dissolveSphere.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -171,7 +173,7 @@ public class LoadingEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        constantSettingTrans = GameObject.Find("ObjectRoot").transform;
     }
 
     // Update is called once per frame
