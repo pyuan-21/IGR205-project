@@ -68,7 +68,7 @@ public class HandPresence : MonoBehaviour
         if (rb != null)
         {
             rb.detectCollisions = false;
-            Debug.Log("OnGrabObject, rb.detectCollisions: " + rb.detectCollisions);
+            //Debug.Log("OnGrabObject, rb.detectCollisions: " + rb.detectCollisions);
         }
     }
 
@@ -77,7 +77,7 @@ public class HandPresence : MonoBehaviour
         if (rb != null)
         {
             rb.detectCollisions = true;
-            Debug.Log("OnDetachObject, rb.detectCollisions: " + rb.detectCollisions);
+            //Debug.Log("OnDetachObject, rb.detectCollisions: " + rb.detectCollisions);
         }
     }
 }

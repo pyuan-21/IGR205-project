@@ -34,12 +34,12 @@ public class GrabHandler : MonoBehaviour
         {
             grabInter.attachTransform = pivotRight;
         }
-        Debug.Log("node:" + node);
+        //Debug.Log("node:" + node);
     }
 
     public void onDetach()
     {
-        Debug.Log("onDetach");
+        //Debug.Log("onDetach");
         var grabInter = GetComponent<XRGrabInteractable>();
         grabInter.attachTransform = null;
     }

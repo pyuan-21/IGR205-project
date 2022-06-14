@@ -8,9 +8,6 @@ public class LoadingEffect : MonoBehaviour
     private float sphereThreshold = 0.0f;
     private float modelThreshold = 1.0f;
 
-    [Range(0.0f, 0.01f)]
-    public float loadingSpeed = 0.001f;
-
     public Transform dissolveSphere;
     public Transform modelRoot;
     private Transform constantSettingTrans;
@@ -133,7 +130,8 @@ public class LoadingEffect : MonoBehaviour
         if (modelThreshold <= 0.0f)
             return;
 
-        if(sphereThreshold < 1.0f)
+        float loadingSpeed = constantSettingTrans.GetComponent<ConstantSetting>().loadingSpeed;
+        if (sphereThreshold < 1.0f)
         {
             //set sphere
             sphereThreshold += loadingSpeed;

@@ -83,17 +83,14 @@ public class GameController : MonoBehaviour
     {
         //todo, ajust all virtual objects by hand like rotation/position/scale, and create a empty gameobject name DefaultPosition to get these info.
         Debug.Log("ResetObjectPos");
-        Vector3 pos = new Vector3(-6.07f, 0.8f, 0);
+        Vector3 pos = new Vector3(-6f, 1.6f, 0);
 
         int selectIdx = indexlist[curIdx];
         var root = GameObject.Find("DisplayRoot");
         for (int i = 0; i < root.transform.childCount; i++)
         {
             var trans = root.transform.GetChild(i);
-            if(trans.name == selectIdx.ToString())
-            {
-                trans.localPosition = pos;
-            }
+            trans.localPosition = pos;
         }
     }
 
