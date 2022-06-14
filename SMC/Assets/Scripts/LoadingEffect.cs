@@ -124,7 +124,7 @@ public class LoadingEffect : MonoBehaviour
                 if (material.shader.name.Contains("Dissolve"))
                 {
                     material.SetFloat("_Threshold", threshold);
-                    Debug.Log("threshold: " + threshold);
+                    //Debug.Log("threshold: " + threshold);
                 }
             }
         }
@@ -135,19 +135,28 @@ public class LoadingEffect : MonoBehaviour
         if (modelThreshold <= 0.0f)
             return;
 
-        //set sphere
-        sphereThreshold += loadingSpeed;
-        UpdateDissolve(dissolveSphere, sphereThreshold);
-
-        //set model
-        modelThreshold -= loadingSpeed;
-        UpdateDissolve(modelRoot, modelThreshold);
+        if(sphereThreshold < 1.0f)
+        {
+            //set sphere
+            sphereThreshold += loadingSpeed;
+            sphereThreshold = Mathf.Clamp(sphereThreshold, 0, 1);
+            UpdateDissolve(dissolveSphere, sphereThreshold);
+        }
+        else
+        {
+            //set model
+            modelThreshold -= loadingSpeed;
+            modelThreshold = Mathf.Clamp(modelThreshold, 0, 1);
+            UpdateDissolve(modelRoot, modelThreshold);
+        }
     }
 
     private void OnEnable()
     {
         sphereThreshold = 0.0f;
         modelThreshold = 1.0f;
+        UpdateDissolve(dissolveSphere, sphereThreshold);
+        UpdateDissolve(modelRoot, modelThreshold);
     }
 
     private void OnDisable()
