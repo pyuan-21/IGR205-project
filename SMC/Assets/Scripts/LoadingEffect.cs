@@ -7,13 +7,11 @@ public class LoadingEffect : MonoBehaviour
 {
     public bool isRunLoadingEffect;
 
-    [Range(0.0f, 1.0f)]
-    public float sphereThreshold = 0.0f;
-    [Range(0.0f, 1.0f)]
-    public float modelThreshold = 1.0f;
+    private float sphereThreshold = 0.0f;
+    private float modelThreshold = 1.0f;
 
-    [Range(0.0f, 1.0f)]
-    public float loadingSpeed = 0.01f;
+    [Range(0.0f, 0.01f)]
+    public float loadingSpeed = 0.001f;
 
     public Transform dissolveSphere;
     public Transform modelRoot;
@@ -123,7 +121,7 @@ public class LoadingEffect : MonoBehaviour
         {
             foreach (var material in render.materials)
             {
-                if (material.name.Contains("DissolveMat"))
+                if (material.shader.name.Contains("Dissolve"))
                 {
                     material.SetFloat("_Threshold", threshold);
                     Debug.Log("threshold: " + threshold);
