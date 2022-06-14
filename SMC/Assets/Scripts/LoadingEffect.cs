@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LoadingEffect : MonoBehaviour
 {
-    public bool isRunLoadingEffect;
+    public bool isRunLoadingEffect = true;
 
     private float sphereThreshold = 0.0f;
     private float modelThreshold = 1.0f;
