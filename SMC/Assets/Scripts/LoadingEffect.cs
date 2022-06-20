@@ -11,6 +11,7 @@ public class LoadingEffect : MonoBehaviour
     public Transform dissolveSphere;
     public Transform modelRoot;
     private Transform constantSettingTrans;
+    private Rigidbody rigidbody;
 
     #region other solution-cube
     // other solution-cube
@@ -172,6 +173,7 @@ public class LoadingEffect : MonoBehaviour
     void Start()
     {
         constantSettingTrans = GameObject.Find("ObjectRoot").transform;
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -186,5 +188,19 @@ public class LoadingEffect : MonoBehaviour
         {
             OnNormalLoad();
         }
+    }
+
+    public void onSelect()
+    {
+        Debug.Log("onSelect");
+        rigidbody.useGravity = false;
+        rigidbody.isKinematic = true;
+    }
+
+    public void onUnSelect()
+    {
+        Debug.Log("onUnSelect");
+        rigidbody.useGravity = true;
+        rigidbody.isKinematic = false;
     }
 }

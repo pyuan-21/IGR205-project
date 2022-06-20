@@ -6,9 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class GrabHandler : MonoBehaviour
 {
-    public Transform pivotLeft;
-    public Transform pivotRight;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,24 +20,11 @@ public class GrabHandler : MonoBehaviour
 
     public void onGrab()
     {
-        var controller = GetComponent<XRGrabInteractable>();
-        var node = controller.selectingInteractor.gameObject.GetComponent<XRController>().controllerNode;
-        var grabInter = GetComponent<XRGrabInteractable>();
-        if(node == XRNode.LeftHand)
-        {
-            grabInter.attachTransform = pivotLeft;
-        }
-        else
-        {
-            grabInter.attachTransform = pivotRight;
-        }
-        //Debug.Log("node:" + node);
+        Debug.Log("onGrab");
     }
 
     public void onDetach()
     {
-        //Debug.Log("onDetach");
-        var grabInter = GetComponent<XRGrabInteractable>();
-        grabInter.attachTransform = null;
+        Debug.Log("onDetach");
     }
 }
