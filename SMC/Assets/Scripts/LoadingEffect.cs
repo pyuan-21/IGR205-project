@@ -150,18 +150,25 @@ public class LoadingEffect : MonoBehaviour
         }
     }
 
-    private void OnNormalLoad()
-    {
-        UpdateDissolve(modelRoot, 0);
-        dissolveSphere.gameObject.SetActive(false);
-    }
-
     private void OnEnable()
     {
+        TryInitialize();
+
+
         sphereThreshold = 0.0f;
-        modelThreshold = 1.0f;
         UpdateDissolve(dissolveSphere, sphereThreshold);
+
+        bool isRunLoadingEffect = constantSettingTrans.GetComponent<ConstantSetting>().isRunLoadingEffect;
+        if (isRunLoadingEffect)
+        {
+            modelThreshold = 1.0f;
+        }
+        else
+        {
+            modelThreshold = 0.0f;
+        }
         UpdateDissolve(modelRoot, modelThreshold);
+        dissolveSphere.gameObject.SetActive(isRunLoadingEffect);
     }
 
     private void OnDisable()
@@ -169,25 +176,25 @@ public class LoadingEffect : MonoBehaviour
 
     }
 
+    private void TryInitialize()
+    {
+        if(constantSettingTrans == null)
+        {
+            constantSettingTrans = GameObject.Find("ObjectRoot").transform;
+            rigidbody = GetComponent<Rigidbody>();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        constantSettingTrans = GameObject.Find("ObjectRoot").transform;
-        rigidbody = GetComponent<Rigidbody>();
+        TryInitialize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool isRunLoadingEffect = constantSettingTrans.GetComponent<ConstantSetting>().isRunLoadingEffect;
-        if (isRunLoadingEffect)
-        {
-            OnLoadingEffect();
-        }
-        else
-        {
-            OnNormalLoad();
-        }
+        OnLoadingEffect();
     }
 
     public void onSelect()
