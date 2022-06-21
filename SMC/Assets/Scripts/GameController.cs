@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 public class GameController : MonoBehaviour
 {
     private Dictionary<string, bool> keyStateDict;
@@ -18,10 +19,15 @@ public class GameController : MonoBehaviour
         keyStateDict = new Dictionary<string, bool>();
         keyStateDict.Add("r", false); // reset object positions
         keyStateDict.Add("s", false); // switch to next object
+        keyStateDict.Add("a", false); // enable/disable alignment
+        keyStateDict.Add("t", false); // try alignment
 
         keyActionDict = new Dictionary<string, Action>();
         keyActionDict.Add("r", ResetObjectPos); // bind key 'r' to Function
         keyActionDict.Add("s", SwitchNextObject); // same
+        keyActionDict.Add("a", SwitchAlignment);
+        keyActionDict.Add("t", tryAlignment);
+
 
         indexlist = new List<int>();
         var root = GameObject.Find("DisplayRoot");
@@ -83,8 +89,8 @@ public class GameController : MonoBehaviour
     {
         //todo, ajust all virtual objects by hand like rotation/position/scale, and create a empty gameobject name DefaultPosition to get these info.
         Debug.Log("ResetObjectPos");
-        Vector3 pos = new Vector3(-5.828f, 1.6f, 0);
-
+        Vector3 pos = new Vector3(0.0f, 0.22f, -0.1170087f);
+        
         int selectIdx = indexlist[curIdx];
         var root = GameObject.Find("DisplayRoot");
         for (int i = 0; i < root.transform.childCount; i++)
@@ -94,4 +100,15 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void SwitchAlignment()
+    {
+        Alignment alignment = GetComponent<Alignment>();
+        alignment.OnSwitchAlignment();
+    }
+
+    void tryAlignment()
+    {
+        Alignment alignment = GetComponent<Alignment>();
+        alignment.OnTryAlignment();
+    }
 }
