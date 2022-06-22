@@ -17,15 +17,11 @@ public class Alignment : MonoBehaviour
 
 
     private bool isSetting;
-    private int recordIndex;//start from 0: center(0)->right(1)->front(2)
-    private Vector3 originalPos;
 
     void Start()
     {
         isSetting = false;
         alignmentRoot.gameObject.SetActive(isSetting);
-        recordIndex = 0;
-        originalPos = objectRoot.localPosition;
     }
 
     public void OnSwitchAlignment()
@@ -39,59 +35,58 @@ public class Alignment : MonoBehaviour
         if (!isSetting)
             return;
 
-        Debug.Log("[Alignment] Current recrod index is " + recordIndex);
+        Debug.Log("[Alignment] Start Alignment!");
 
-        switch (recordIndex)
-        {
-            case 0:
-                //record center point
-                center.position = RightHandTrans.position;
-                break;
-            case 1:
-                //record right point
-                right.position = RightHandTrans.position;
-                break;
-            case 2:
-                //record front point
-                front.position = RightHandTrans.position;
-                break;
-            default:
-                break;
-        }
+        //(1) pos
+        objectRoot.localPosition = center.localPosition;
 
-        // **Alignment**
-        if (recordIndex == 2)
-        {
-            Debug.Log("[Alignment] Start Alignment!");
+        //(2) scale
+        Vector2 rightPos = new Vector3(right.localPosition.x, right.localPosition.z);
+        Vector2 centerPos = new Vector3(center.localPosition.x, center.localPosition.z);
+        float scaleZ = (rightPos - centerPos).magnitude * 2.0f;
 
-            //(1) pos
-            objectRoot.localPosition = center.localPosition;
+        Vector2 frontPos = new Vector2(front.localPosition.x, front.localPosition.z);
+        float scaleX = (frontPos - centerPos).magnitude * 2.0f;
 
-            //(2) scale
-            Vector2 rightPos = new Vector3(right.localPosition.x, right.localPosition.z);
-            Vector2 centerPos = new Vector3(center.localPosition.x, center.localPosition.z);
-            float scaleZ = (rightPos-centerPos).magnitude * 2.0f;
+        float scaleY = simpleTableMain.localScale.y;
+        simpleTableMain.localScale = new Vector3(scaleX, scaleY, scaleZ);
 
-            Vector2 frontPos = new Vector2(front.localPosition.x, front.localPosition.z);
-            float scaleX = (frontPos-centerPos).magnitude * 2.0f;
+        //(3) rotation
+        Vector2 dirVec2 = (frontPos - centerPos).normalized;//totest YUAN replace center to zero!!!YUAN
+        Vector3 dir = new Vector3(dirVec2.x, 0, dirVec2.y);
+        float angle = Vector3.SignedAngle(Vector3.forward, dir, Vector3.up);
+        Debug.Log("[Alignment] angle is " + angle);
+        walls.localEulerAngles = new Vector3(0, angle, 0);
+        simpleTableRoot.localEulerAngles = new Vector3(0, angle, 0);
 
-            float scaleY = simpleTableMain.localScale.y;
-            simpleTableMain.localScale = new Vector3(scaleX, scaleY, scaleZ);
+        //(4) displayRoot
+        displayRoot.localEulerAngles = simpleTableRoot.localEulerAngles;
+    }
 
-            //(3) rotation
-            Vector2 dirVec2 = (frontPos - centerPos).normalized;//totest YUAN replace center to zero!!!YUAN
-            Vector3 dir = new Vector3(dirVec2.x, 0, dirVec2.y);
-            float angle = Vector3.SignedAngle(Vector3.forward, dir, Vector3.up);
-            Debug.Log("[Alignment] angle is " + angle);
-            walls.localEulerAngles = new Vector3(0, angle, 0);
-            simpleTableRoot.localEulerAngles = new Vector3(0, angle, 0);
+    public void OnRecordCenterPoint()
+    {
+        if (!isSetting)
+            return;
+        //record center point
+        center.position = RightHandTrans.position;
+        Debug.Log("[Alignment] Center Point has been recorded!");
+    }
 
-            //(4) displayRoot
-            displayRoot.localEulerAngles = simpleTableRoot.localEulerAngles;
-        }
+    public void OnRecordRightPoint()
+    {
+        if (!isSetting)
+            return;
+        Debug.Log("[Alignment] Right Point has been recorded!");
+        //record right point
+        right.position = RightHandTrans.position;
+    }
 
-        recordIndex += 1;
-        if (recordIndex > 2)
-            recordIndex = 0;
+    public void OnRecordFrontPoint()
+    {
+        if (!isSetting)
+            return;
+        Debug.Log("[Alignment] Front Point has been recorded!");
+        //record front point
+        front.position = RightHandTrans.position;
     }
 }
