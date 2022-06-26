@@ -44,8 +44,8 @@ public class GameController : MonoBehaviour
             trans.gameObject.SetActive(false);
             indexlist.Add(i);
         }
-        var rnd = new System.Random();
-        indexlist = indexlist.OrderBy(item => rnd.Next()).ToList();
+        //var rnd = new System.Random();
+        //indexlist = indexlist.OrderBy(item => rnd.Next()).ToList();
         curIdx = 0;
 
         // add reset position by hand
