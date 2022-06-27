@@ -14,4 +14,4 @@
   
   
   - Solution:
-  ![Alt Text](loading_effect)
+  ![Alt Text](loading_effect.gif)
