@@ -1,5 +1,5 @@
 - Project Description:
-  This project refers to the paper: "The human source memory system struggles to distinguish virtual reality and reality, Rubo et al., 2021". By using Unity, we create a virtual room which is similar to a lab room in reality, and provide a possible solition(loading effect: dissolve visual effect) to solve the "memory source confusion" problem. 
+  This project refers to the paper: "The human source memory system struggles to distinguish virtual reality and reality, Rubo et al., 2021". By using Unity, we create a virtual room which is similar to a lab room in reality, and provide a possible solutions(loading effect: dissolve visual effect) to solve the "source memory confusion" problem. 
 
   
 
