@@ -11,3 +11,7 @@
   1- Alignment Table, press key 'a' to enable "alignment", key1-3 to set center, right and front point by right hand. press key 't' to align.
   2- Enable/Disable loading effect: select/unselect it in ObjectRoot(GameObject in scene)-Game Controller(Script component of 'ObjectRoot')
   3- Press key 's' to switch models, and press key 'r' to reset the position of models
+  
+  
+  - Solution:
+  ![Alt Text](loading_effect)
